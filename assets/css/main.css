@@ -69,8 +69,6 @@ button{
 	margin: 1rem 0 0 0;
 }
 
-
-
 /* Basic */
 
 	@-ms-viewport {
@@ -1435,11 +1433,12 @@ button{
 		gap: 25px;
 		margin-top: 1rem;
 	}
-	.instruct{
+	.data-directions-container {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-self: center;
+		width: 40%;
 	}
 
 	.data-container, .data-directions-container {
