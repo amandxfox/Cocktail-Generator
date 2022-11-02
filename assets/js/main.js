@@ -7,29 +7,49 @@ function getDrink(){
 fetch (`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drink}`)
 .then(res => res.json())
 .then(data =>  { 
-	console.log(data.drinks[0])
-	document.querySelector('.drink-name').innerText = data.drinks[0].strDrink
-	document.querySelector('img').src = data.drinks[0].strDrinkThumb
 
-	document.querySelector('.ingredient1').innerText = data.drinks[0].strIngredient1
-	document.querySelector('.ingredient2').innerText = data.drinks[0].strIngredient2
-	document.querySelector('.ingredient3').innerText = data.drinks[0].strIngredient3
-	document.querySelector('.ingredient4').innerText = data.drinks[0].strIngredient4
-	document.querySelector('.ingredient5').innerText = data.drinks[0].strIngredient5
-	document.querySelector('.ingredient6').innerText = data.drinks[0].strIngredient6
-	document.querySelector('.ingredient7').innerText = data.drinks[0].strIngredient7
-	document.querySelector('.ingredient8').innerText = data.drinks[0].strIngredient8
+	const drink = data.drinks[0];
 
-	document.querySelector('.measure1').innerText = data.drinks[0].strMeasure1
-	document.querySelector('.measure2').innerText = data.drinks[0].strMeasure2
-	document.querySelector('.measure3').innerText = data.drinks[0].strMeasure3
-	document.querySelector('.measure4').innerText = data.drinks[0].strMeasure4
-	document.querySelector('.measure5').innerText = data.drinks[0].strMeasure5
-	document.querySelector('.measure6').innerText = data.drinks[0].strMeasure6
-	document.querySelector('.measure7').innerText = data.drinks[0].strMeasure7
-	document.querySelector('.measure8').innerText = data.drinks[0].strMeasure8
+	document.querySelector('.drink-name').innerText = drink.strDrink;
+	document.querySelector('img').src = drink.strDrinkThumb;
 
-	document.querySelector('.instructions').innerText = data.drinks[0].strInstructions
+	const resolveProperties = (obj, key) => Object.keys(obj)
+		.filter(x => x.startsWith(key))
+		.map(x => ({
+			key: x,
+			value: obj[x]
+		}));
+
+	const ingredients = resolveProperties(drink, 'strIngredient');
+
+	const ingredientContainer = document.querySelector('.ingredient-list ul');
+	ingredientContainer.innerHTML = '';
+
+	ingredients.forEach(x => {
+
+		const li = document.createElement('li');
+		li.innerText = x.value;
+
+		ingredientContainer.appendChild(li);
+	});
+
+	const quantities = resolveProperties(drink, 'strMeasure');
+
+	const quantityContainer = document.querySelector('.ingredient-quantity ul');
+	quantityContainer.innerHTML = '';
+	
+	quantities.forEach(x => {
+
+		const li = document.createElement('li');
+		li.innerText = x.value;
+
+		quantityContainer.appendChild(li);
+	});
+
+	document.querySelector('.instructions').innerText = data.drinks[0].strInstructions;
+
+	document.querySelector('.data-directions-container').style.display = 'block';
+	document.querySelector('.data-container').style.display = 'flex';
 })
 .catch(err => {
 	console.log(`error ${err}`)

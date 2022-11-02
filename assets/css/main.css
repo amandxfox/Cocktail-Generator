@@ -69,6 +69,8 @@ button{
 	margin: 1rem 0 0 0;
 }
 
+
+
 /* Basic */
 
 	@-ms-viewport {
@@ -1077,7 +1079,7 @@ button{
 			-webkit-transition: -webkit-transform 0.325s ease-in-out, -webkit-filter 0.325s ease-in-out;
 			-ms-transition: -ms-transform 0.325s ease-in-out, -ms-filter 0.325s ease-in-out;
 			transition: transform 0.325s ease-in-out, filter 0.325s ease-in-out;
-			background-image: url("/Users/amanda/Files/100Devs/Portfolio Projects/cocktail-maker/images/drinks-background.jpg");
+			background-image: url("../../images/drinks-background.jpg");
 			background-position: center;
 			background-size: cover;
 			background-repeat: no-repeat;
@@ -1438,6 +1440,10 @@ button{
 		flex-direction: column;
 		justify-content: center;
 		align-self: center;
+	}
+
+	.data-container, .data-directions-container {
+		display: none;
 	}
 	
 /* Footer */
