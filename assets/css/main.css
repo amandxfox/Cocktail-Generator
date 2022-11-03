@@ -1438,7 +1438,7 @@ button{
 		flex-direction: column;
 		justify-content: center;
 		align-self: center;
-		width: 40%;
+		width: 60%;
 	}
 
 	.data-container, .data-directions-container {
